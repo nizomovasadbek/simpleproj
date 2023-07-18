@@ -2,6 +2,7 @@
 
 #define WHITE_ON_BLACK 0x0F
 
+void printHex(i32 num);
 void printDec(i32 num);
 
 void printf(i8* str, ...) {
@@ -32,6 +33,12 @@ void printf(i8* str, ...) {
                     str += 2;
                     break;
 
+                case 'X':
+                    printHex(*(i32*) argp);
+                    argp += sizeof(i32);
+                    str += 2;
+                    break;
+
                 default:
                     str += 2;
                     break;
@@ -43,7 +50,33 @@ void printf(i8* str, ...) {
     }
 }
 
+void printHex(i32 num) {
+    if(!num) {
+        printChar('0', WHITE_ON_BLACK);
+        return;
+    }
+
+    i8 digit[] = { '0', '1', '2', '3', '4', '5', '6',
+    '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+    i8 hex[10];
+    u16 rem = 0;
+    u32 n = 0;
+    while(num) {
+        rem = num % 16;
+        num /= 16;
+        hex[n++] = digit[rem];
+    }
+
+    for(i32 i = n-1; i >= 0; i--) {
+        printChar(hex[i], WHITE_ON_BLACK);
+    }
+}
+
 void printDec(i32 num) {
+    if(!num) {
+        printChar('0', WHITE_ON_BLACK);
+        return;
+    }
     i8 digit[10];
     u32 n = 0;
     while(num) {

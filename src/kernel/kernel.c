@@ -1,9 +1,10 @@
-#include "std/stdio.h"
+#include "keyboard/keyboard.h"
+#include "vga/screen.h"
 
 void kmain(void) {
     clearScreen();
-
-    printf("My IDOL %d", 121212);
+    testPs2Controller();
+    testPs2Port();
 
     while(1);
 }

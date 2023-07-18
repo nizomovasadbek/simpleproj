@@ -7,7 +7,10 @@ BUILD=build
 SRC=src
 MAIN=main.img
 
-all: promise $(BUILD)/boot/bootloader.bin entry stdio cursor vga io_c $(BUILD)/kernel/kernel.o link finish
+all: promise $(BUILD)/boot/bootloader.bin entry stdio keyboard cursor vga io_c $(BUILD)/kernel/kernel.o link finish
+
+keyboard:
+	$(CC) $(CC_FLAG) $(SRC)/kernel/keyboard/keyboard.c -o $(BUILD)/kernel/keyboard/keyboard.o
 
 stdio:
 	$(CC) $(CC_FLAG) $(SRC)/kernel/std/stdio.c -o $(BUILD)/kernel/std/stdio.o
@@ -27,7 +30,8 @@ vga:
 link:
 	$(LD) -o $(BUILD)/kernel/kernel.bin -Ttext 0x1000 $(BUILD)/kernel/kernel_entry.o \
 	$(BUILD)/kernel/vga/cursor.o $(BUILD)/kernel/io_port/ioc.o $(BUILD)/kernel/kernel.o \
-	$(BUILD)/kernel/vga/screen.o $(BUILD)/kernel/std/stdio.o --oformat binary
+	$(BUILD)/kernel/vga/screen.o $(BUILD)/kernel/std/stdio.o $(BUILD)/kernel/keyboard/keyboard.o \
+	 --oformat binary
 
 $(BUILD)/kernel/kernel.o: $(SRC)/kernel/kernel.c
 	$(CC) $(CC_FLAG) $< -o $@
@@ -42,7 +46,7 @@ $(BUILD)/boot/bootloader.bin: $(SRC)/boot/bootloader.asm
 
 promise:
 	mkdir -p $(BUILD)/{boot,kernel}
-	mkdir -p $(BUILD)/kernel/{vga,io_port,std}
+	mkdir -p $(BUILD)/kernel/{vga,io_port,std,keyboard}
 
 run:
 	qemu-system-i386 -fda $(BUILD)/$(MAIN)
