@@ -7,13 +7,10 @@ BUILD=build
 SRC=src
 MAIN=main.img
 
-all: promise $(BUILD)/boot/bootloader.bin entry vga io_c io_port $(BUILD)/kernel/kernel.o link finish
+all: promise $(BUILD)/boot/bootloader.bin entry vga io_c $(BUILD)/kernel/kernel.o link finish
 
 io_c:
 	$(CC) $(CC_FLAG) $(SRC)/kernel/io_port/io.c -o $(BUILD)/kernel/io_port/ioc.o
-
-io_port:
-	$(ASMC) -f elf32 $(SRC)/kernel/io_port/io.asm -o $(BUILD)/kernel/io_port/io.o
 
 entry:
 	$(ASMC) -f elf32 $(SRC)/kernel/kernel_entry.asm -o $(BUILD)/kernel/kernel_entry.o
@@ -22,10 +19,9 @@ vga:
 	$(CC) $(CC_FLAG) $(SRC)/kernel/vga/screen.c -o $(BUILD)/kernel/vga/screen.o
 
 link:
-	$(LD) -o $(BUILD)/kernel/kernel.bin -Ttext 0x1000 $(BUILD)/kernel/kernel_entry.o $(BUILD)/kernel/io_port/ioc.o $(BUILD)/kernel/io_port/io.o $(BUILD)/kernel/kernel.o $(BUILD)/kernel/vga/screen.o --oformat binary
+	$(LD) -o $(BUILD)/kernel/kernel.bin -Ttext 0x1000 $(BUILD)/kernel/kernel_entry.o $(BUILD)/kernel/io_port/ioc.o $(BUILD)/kernel/kernel.o $(BUILD)/kernel/vga/screen.o --oformat binary
 
 $(BUILD)/kernel/kernel.o: $(SRC)/kernel/kernel.c
-	# i386-elf-g++ $(CC_FLAG) $< -o $@
 	$(CC) $(CC_FLAG) $< -o $@
 
 finish:
