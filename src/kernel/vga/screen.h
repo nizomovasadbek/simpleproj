@@ -8,5 +8,6 @@
 void clearScreen();
 void println(char*);
 void printChar(char, i8);
+void printlnInfo(char* str);
 
 #endif
