@@ -7,7 +7,7 @@ BUILD=build
 SRC=src
 MAIN=main.img
 
-all: promise bootloader entry vga kernel link finish
+all: promise $(BUILD)/boot/bootloader.bin entry vga $(BUILD)/kernel/kernel.o link finish
 
 entry:
 	$(ASMC) -f elf32 $(SRC)/kernel/kernel_entry.asm -o $(BUILD)/kernel/kernel_entry.o
@@ -18,16 +18,16 @@ vga:
 link:
 	$(LD) -o $(BUILD)/kernel/kernel.bin -Ttext 0x1000 $(BUILD)/kernel/kernel_entry.o $(BUILD)/kernel/kernel.o $(BUILD)/kernel/vga/screen.o --oformat binary
 
-kernel:
-	$(CC) $(CC_FLAG) $(SRC)/kernel/kernel.c -o $(BUILD)/kernel/kernel.o
+$(BUILD)/kernel/kernel.o: $(SRC)/kernel/kernel.c
+	$(CC) $(CC_FLAG) $< -o $@
 
 finish:
 	dd if=/dev/zero of=$(BUILD)/$(MAIN) bs=512 count=2880
 	dd if=$(BUILD)/boot/bootloader.bin of=$(BUILD)/$(MAIN) conv=notrunc
 	dd if=$(BUILD)/kernel/kernel.bin of=$(BUILD)/$(MAIN) conv=notrunc seek=1 bs=512
 
-bootloader:
-	$(ASMC) $(ASM_FLAG) $(SRC)/boot/bootloader.asm -o $(BUILD)/boot/bootloader.bin
+$(BUILD)/boot/bootloader.bin: $(SRC)/boot/bootloader.asm
+	$(ASMC) $(ASM_FLAG) $< -o $@
 
 promise:
 	mkdir -p $(BUILD)/{boot,kernel}
