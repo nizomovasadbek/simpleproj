@@ -1,10 +1,9 @@
-// #include "stdint.h"
-#include "vga/screen.h"
-// #include "io_port/io.h"
+#include "std/stdio.h"
 
 void kmain(void) {
     clearScreen();
-    println("Hello World!");
+
+    printf("My IDOL %d", 121212);
 
     while(1);
 }
