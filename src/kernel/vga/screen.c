@@ -19,5 +19,8 @@ void printChar(char c, i8 attr) {
 }
 
 void println(char* str) {
-
+    while(*str) {
+        printChar(*str, 0x0F);
+        str++;
+    }
 }

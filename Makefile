@@ -2,7 +2,7 @@ ASMC=nasm
 ASM_FLAG=-f bin
 CC=i386-elf-gcc
 LD=i386-elf-ld
-CC_FLAG=-ffreestanding -c -Wall -Wextra -O3 -nostdlib
+CC_FLAG=-ffreestanding -c -Wall -Wextra -O3 -nostdlib -fno-builtin -fno-builtin-functions
 BUILD=build
 SRC=src
 MAIN=main.img
@@ -19,6 +19,7 @@ link:
 	$(LD) -o $(BUILD)/kernel/kernel.bin -Ttext 0x1000 $(BUILD)/kernel/kernel_entry.o $(BUILD)/kernel/kernel.o $(BUILD)/kernel/vga/screen.o --oformat binary
 
 $(BUILD)/kernel/kernel.o: $(SRC)/kernel/kernel.c
+	# i386-elf-g++ $(CC_FLAG) $< -o $@
 	$(CC) $(CC_FLAG) $< -o $@
 
 finish:
