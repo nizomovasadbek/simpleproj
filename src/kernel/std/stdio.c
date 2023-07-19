@@ -34,6 +34,7 @@ void printf(i8* str, ...) {
                     break;
 
                 case 'X':
+                case 'x':
                     printHex(*(i32*) argp);
                     argp += sizeof(i32);
                     str += 2;
