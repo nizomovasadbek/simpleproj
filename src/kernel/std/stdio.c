@@ -1,4 +1,5 @@
 #include "stdio.h"
+#include "../vga/screen.h"
 
 #define WHITE_ON_BLACK 0x0F
 

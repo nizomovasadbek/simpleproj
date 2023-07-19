@@ -7,7 +7,10 @@ BUILD=build
 SRC=src
 MAIN=main.img
 
-all: promise $(BUILD)/boot/bootloader.bin entry stdio keyboard cursor vga io_c $(BUILD)/kernel/kernel.o link finish
+all: promise $(BUILD)/boot/bootloader.bin entry stdio string keyboard cursor vga io_c $(BUILD)/kernel/kernel.o link finish
+
+string:
+	$(CC) $(CC_FLAG) $(SRC)/kernel/std/string.c -o $(BUILD)/kernel/std/string.o
 
 keyboard:
 	$(CC) $(CC_FLAG) $(SRC)/kernel/keyboard/keyboard.c -o $(BUILD)/kernel/keyboard/keyboard.o
@@ -31,7 +34,7 @@ link:
 	$(LD) -o $(BUILD)/kernel/kernel.bin -Ttext 0x1000 $(BUILD)/kernel/kernel_entry.o \
 	$(BUILD)/kernel/vga/cursor.o $(BUILD)/kernel/io_port/ioc.o $(BUILD)/kernel/kernel.o \
 	$(BUILD)/kernel/vga/screen.o $(BUILD)/kernel/std/stdio.o $(BUILD)/kernel/keyboard/keyboard.o \
-	 --oformat binary
+	$(BUILD)/kernel/std/string.o --oformat binary
 
 $(BUILD)/kernel/kernel.o: $(SRC)/kernel/kernel.c
 	$(CC) $(CC_FLAG) $< -o $@

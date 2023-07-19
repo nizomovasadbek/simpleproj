@@ -8,8 +8,6 @@ void kmain(void) {
     testPs2Port();
 
     printf("Hello, SimpleOS written in C\n");
-    clearScreen();
-    printf("Adjusting volume: %d%%\n", 92);
 
     while(1);
 }
