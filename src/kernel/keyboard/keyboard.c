@@ -12,7 +12,7 @@ void testPs2Controller() {
         return;
     }
 
-    printlnInfo("[TEST] Failed to get into connection with PS/2 controller\b");
+    printlnInfo("[TEST] Failed to get into connection with PS/2 controller\n");
 }
 
 void testPs2Port() {
