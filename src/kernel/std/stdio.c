@@ -10,6 +10,7 @@ void printf(i8* str, ...) {
     void* argp = &str;
     argp += 4;
     i8 character = 0;
+    i8* temp;
 
     while(*str) {
         if(*str == '%') {
@@ -31,6 +32,13 @@ void printf(i8* str, ...) {
                 case 'd':
                     printDec(*(i32*) argp);
                     argp += sizeof(i32);
+                    str += 2;
+                    break;
+
+                case 's':
+                    temp = *(i8**) argp;
+                    println(temp);
+                    argp += sizeof(i8*);
                     str += 2;
                     break;
 

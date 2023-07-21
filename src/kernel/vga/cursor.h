@@ -4,5 +4,6 @@
 #include "../stdint.h"
 
 i32 getCursorPosition(void);
+void setCursorPosition(u32 pos);
 
 #endif

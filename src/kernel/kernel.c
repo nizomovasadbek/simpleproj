@@ -8,11 +8,12 @@ void kmain(void) {
     testPs2Controller();
     testPs2Port();
 
-    printf("Hello, SimpleOS written in C\n");
-    clearScreen();
+    printf("Hello, SimpleOS written %s\n", "in C");
+    setCursorPosition(12);
+    i32 pos = getCursorPosition();
+    i32 row = pos / 80;
+    i32 col = pos % 80;
+    printf("ROW: %d, COL: %d\n", row, col);
 
-    i32 pos = getCursorPosition();    
-
-    printf("Cursor position: %d\n", pos);
     while(1);
 }
