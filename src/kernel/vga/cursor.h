@@ -3,7 +3,6 @@
 
 #include "../stdint.h"
 
-void enable_cursor(u8 cursor_start, u8 cursor_end);
-void disable_cursor();
+i32 getCursorPosition(void);
 
 #endif
