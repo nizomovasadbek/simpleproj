@@ -1,6 +1,7 @@
 #include "cursor.h"
 #include "../io_port/io.h"
 #include "screen.h"
+#include "../std/stdio.h"
 
 i32 getCursorPosition(void) {
     outb(0x3D4, 14);
@@ -14,7 +15,9 @@ i32 getCursorPosition(void) {
 }
 
 void setCursorPosition(u32 pos) {
-    pos >>= 1;
+    if(pos >= SCREENSIZE) {
+        return;
+    }
     outb(SCREEN_CTRL, 14);
     outb(SCREEN_DATA, (u8)(pos >> 8));
     outb(SCREEN_CTRL, 15);
