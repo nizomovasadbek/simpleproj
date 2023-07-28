@@ -7,13 +7,11 @@ void kmain(void) {
     clearScreen();
     testPs2Controller();
     testPs2Port();
+    u32 point = 32;
 
-    printf("Hello, simple OS written %s\n", "in C");
-    printf("Test ptr!");
-    i32 pos = getCursorPosition();
-    i32 row = pos / 80;
-    i32 col = pos % 80;
-    printf("ROW: %d, COL: %d\n", row, col);
+    printf("stack allocated variables address is 0x%X(%d)\n", &point, point);
+    // printf("Hello, simple OS written %s\n", "in C");
+    
 
     while(1);
 }

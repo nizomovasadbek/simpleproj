@@ -43,7 +43,7 @@ start_protected_mode:
     mov fs, ax
     mov gs, ax
 
-    mov esp, 0x90000
+    mov esp, 0x900000
     mov ebp, esp
 
     mov ah, 0x0F

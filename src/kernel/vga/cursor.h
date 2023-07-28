@@ -3,7 +3,12 @@
 
 #include "../std/stdint.h"
 
-i32 getCursorPosition(void);
+typedef struct {
+    u16 row;
+    u16 col;
+} Cursor;
+
+Cursor getCursorPosition(void);
 void setCursorPosition(u32 pos);
 
 #endif

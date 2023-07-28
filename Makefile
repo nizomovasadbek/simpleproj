@@ -9,7 +9,7 @@ SRC=src
 MAIN=main.img
 
 C_SOURCES=$(wildcard $(SRC)/kernel/*.c $(SRC)/kernel/io_port/*.c $(SRC)/kernel/keyboard/*.c \
-	$(SRC)/kernel/std/*.c $(SRC)/kernel/vga/*.c)
+	$(SRC)/kernel/std/*.c $(SRC)/kernel/vga/*.c $(SRC)/kernel/mem/*.c)
 ASM_SOURCES=$(SRC)/kernel/kernel_entry.asm
 ASM_OBJS=$(patsubst $(SRC)/%.asm,$(BUILD)/%.o,$(ASM_SOURCES))
 C_OBJS=$(patsubst $(SRC)/%.c,$(BUILD)/%.o,$(C_SOURCES))
