@@ -1,6 +1,6 @@
 #include "screen.h"
-#include "cursor.h"
-#include "../std/stdint.h"
+#include <cursor.h>
+#include <stdint.h>
 
 static u16* cursor = (u16*) VIDMEM;
 __attribute__((unused)) static u16 cptr = 0;

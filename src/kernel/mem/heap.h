@@ -1,7 +1,7 @@
 #ifndef _KHEAP_H
 #define _KHEAP_H
 
-#include "../std/stdint.h"
+#include <string.h>
 #define HEAP_MEMORY_START_POINT 0x100000
 #define HEAP_MEMORY_END_POINT 0x8FFFFF
 

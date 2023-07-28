@@ -3,7 +3,9 @@ ASM_FLAG=-f bin
 CC=i386-elf-gcc
 LD=i386-elf-ld
 LD_FLAG=-Map=output.map
-CC_FLAG=-Ttext 0x1000 -ffreestanding -Wall -Wextra -O3 -nostdlib -fno-builtin -fno-builtin-functions
+CC_FLAG=-I$(SRC)/kernel/std -I$(SRC)/kernel/vga -I$(SRC)/kernel/io_port \
+-I$(SRC)/kernel/mem -I$(SRC)/kernel/keyboard \
+-Ttext 0x1000 -ffreestanding -Wall -Wextra -O3 -nostdlib -fno-builtin -fno-builtin-functions
 BUILD=build
 SRC=src
 MAIN=main.img

@@ -2,7 +2,7 @@
 #define _STDIO_H
 
 #include "stdint.h"
-#include "../vga/screen.h"
+#include <screen.h>
 
 void printf(i8*, ...);
 

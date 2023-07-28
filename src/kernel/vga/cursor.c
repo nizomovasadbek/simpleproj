@@ -1,7 +1,7 @@
 #include "cursor.h"
-#include "../io_port/io.h"
+#include <io.h>
 #include "screen.h"
-#include "../std/stdio.h"
+#include <stdio.h>
 
 Cursor getCursorPosition(void) {
     outb(0x3D4, 14);

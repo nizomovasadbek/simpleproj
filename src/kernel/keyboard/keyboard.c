@@ -1,7 +1,7 @@
 #include "keyboard.h"
-#include "../io_port/io.h"
-#include "../std/stdint.h"
-#include "../std/stdio.h"
+#include <io.h>
+#include <stdint.h>
+#include <stdio.h>
 
 void testPs2Controller() {
     outb(KEYBOARD_OUT_PORT, 0xAA);

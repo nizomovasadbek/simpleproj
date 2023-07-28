@@ -1,7 +1,7 @@
-#include "vga/cursor.h"
-#include "keyboard/keyboard.h"
-#include "std/stdio.h"
-#include "vga/screen.h"
+#include <cursor.h>
+#include <keyboard.h>
+#include <stdio.h>
+#include <screen.h>
 
 void kmain(void) {
     clearScreen();
