@@ -10,10 +10,10 @@ void kmain(void) {
 
     printf("Hello, simple OS written %s\n", "in C");
     printf("Test ptr!");
-    // i32 pos = getCursorPosition();
-    // i32 row = pos / 80;
-    // i32 col = pos % 80;
-    // printf("ROW: %d, COL: %d\n", row, col);
+    i32 pos = getCursorPosition();
+    i32 row = pos / 80;
+    i32 col = pos % 80;
+    printf("ROW: %d, COL: %d\n", row, col);
 
     while(1);
 }

@@ -1,7 +1,7 @@
 #ifndef _SCREEN_H
 #define _SCREEN_H
 
-#include "../stdint.h"
+#include "../std/stdint.h"
 
 #define SCREENSIZE (80*25)
 #define VIDMEM 0xB8000

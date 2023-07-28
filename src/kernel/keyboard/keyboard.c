@@ -1,6 +1,6 @@
 #include "keyboard.h"
 #include "../io_port/io.h"
-#include "../stdint.h"
+#include "../std/stdint.h"
 #include "../std/stdio.h"
 
 void testPs2Controller() {

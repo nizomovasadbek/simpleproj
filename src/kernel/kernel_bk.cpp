@@ -1,4 +1,5 @@
-#include "stdint.h"
+// unused file...
+#include "std/stdint.h"
 
 extern "C" void kmain(void) {
     i16 attr = (i16) 'C';
