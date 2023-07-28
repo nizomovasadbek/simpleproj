@@ -57,7 +57,7 @@ return_value:
 
 ;[bits 16]
 bootloader_hello_message:
-    db "Booting CatalinaOS...", ENDL, 0
+    db "Booting OS...", ENDL, 0
 
 bootloader_switch_protected_mode:
     db "System is switching to 32-bit protected mode", ENDL, 0

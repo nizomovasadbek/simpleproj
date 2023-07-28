@@ -8,7 +8,7 @@ void kmain(void) {
     testPs2Controller();
     testPs2Port();
 
-    printf("Hello, SimpleOS written %s\n", "in C");
+    printf("Hello, simple OS written %s\n", "in C");
     printf("Test ptr!");
     // i32 pos = getCursorPosition();
     // i32 row = pos / 80;
