@@ -18,7 +18,10 @@ struct Heap {
 #define HEAP_COUNT 200
 #define MEMTABLE_SIZE sizeof(Heap) * HEAP_COUNT
 
+#define FREE_SUCCESS            0x01
+#define MEMORY_BLOCK_NOT_FOUND  0x02
+
 void* malloc(size_t size);
-void free(void *restrict ptr);
+i32 free(void *restrict ptr);
 
 #endif

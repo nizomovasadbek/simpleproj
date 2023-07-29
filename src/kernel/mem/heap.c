@@ -25,7 +25,7 @@ void* malloc(size_t size) {
     return ret_ptr;
 }
 
-void free(void *restrict ptr) {
+i32 free(void *restrict ptr) {
     u64 startPtr = HEAP_MEMORY_START_POINT;
     Heap h;
     for(u32 i = 0; i < HEAP_COUNT; i++) {
@@ -33,7 +33,9 @@ void free(void *restrict ptr) {
         startPtr += sizeof(Heap);
         if(((void*) h.startPoint) == ptr) {
             h.allocated = false;
-            break;
+            return FREE_SUCCESS;
         }
     }
+
+    return MEMORY_BLOCK_NOT_FOUND;
 }
