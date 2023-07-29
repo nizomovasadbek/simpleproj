@@ -3,7 +3,7 @@
 
 #include <string.h>
 #define HEAP_MEMORY_START_POINT 0x100000
-#define HEAP_MEMORY_END_POINT 0x8FFFFF
+#define HEAP_MEMORY_END_POINT 0x5FFFFF
 
 typedef struct Heap Heap;
 

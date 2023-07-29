@@ -11,12 +11,24 @@ bootloader_entry:
 %include "src/boot/print.asm"
 %include "src/boot/disk.asm"
 
+a20_enable:
+    push ax
+    mov ax, 0x2401
+    int 0x10
+    pop ax
+    ret
+
 bootloader_main:
     mov bx, bootloader_hello_message
     call print
 
     mov bx, kernel_loading_from_disk
     call print
+
+    mov bx, a20_line_enable
+    call print
+
+    call a20_enable
 
     xor bx, bx
     mov es, bx
@@ -64,6 +76,9 @@ bootloader_switch_protected_mode:
 
 kernel_loading_from_disk:
     db "Kernel is loading from disk...", ENDL, 0
+
+a20_line_enable:
+    db "A20 Line is enabling", ENDL, 0
 
 times 510-($-$$) db 0
 dw 0xaa55
