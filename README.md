@@ -3,3 +3,7 @@ to make a floppy disk image
 ```bash
 make
 ```
+to Run:
+```bash
+make run -s
+```
