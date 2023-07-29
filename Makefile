@@ -2,10 +2,10 @@ ASMC=nasm
 ASM_FLAG=-f bin
 CC=i386-elf-gcc
 LD=i386-elf-ld
-LD_FLAG=-Map=output.map
+LD_FLAG=-Map=output.map -g
 CC_FLAG=-I$(SRC)/kernel/std -I$(SRC)/kernel/vga -I$(SRC)/kernel/io_port \
 -I$(SRC)/kernel/mem -I$(SRC)/kernel/keyboard \
--Ttext 0x1000 -ffreestanding -Wall -Wextra -O3 -nostdlib -fno-builtin -fno-builtin-functions
+-Ttext 0x1000 -ffreestanding -Wall -Wextra -O3 -nostdlib -fno-builtin -fno-builtin-functions -g
 BUILD=build
 SRC=src
 MAIN=main.img
@@ -29,7 +29,7 @@ $(KERNEL): $(ASM_OBJS) $(C_SOURCES)
 	$(CC) $(CC_FLAG) $^ -o $@
 
 $(ASM_OBJS): $(ASM_SOURCES)
-	$(ASMC) -f elf32 $< -o $@
+	$(ASMC) -f elf32 $< -o $@ -g
 
 bootloader:
 	$(ASMC) $(ASM_FLAG) $(SRC)/boot/bootloader.asm -o $(BUILD)/boot/bootloader.bin
@@ -43,3 +43,6 @@ run:
 
 clean:
 	rm -rf $(BUILD)
+
+debug:
+	qemu-system-i386 -fda $(BUILD)/$(MAIN) -s -S
