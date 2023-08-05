@@ -18,8 +18,13 @@ typedef unsigned int u32;
 typedef u64 size_t;
 typedef u8 bool;
 
-#define true 1
-#define false 0
-#define NULL (void*)0
+#define true    1
+#define false   0
+#define NULL    (void*)0
+
+#define BYTE    sizeof(i8)
+#define WORD    sizeof(i16)
+#define DWORD   sizeof(i32)
+#define QWORD   sizeof(i64)
 
 #endif
