@@ -12,3 +12,4 @@ Required packages:
 + The GNU Linker (i386)
 + NASM
 + C compiler (i386)
++ QEMU
