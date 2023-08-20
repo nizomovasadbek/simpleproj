@@ -18,3 +18,13 @@ void memcpy(void *restrict dst, const void *restrict src, size_t size) {
         n++;
     }
 }
+
+size_t strlen(const char *restrict str) {
+    size_t len = 0;
+    while(*str) {
+        len++;
+        str++;
+    }
+
+    return len;
+}
