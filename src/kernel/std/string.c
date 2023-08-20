@@ -9,8 +9,7 @@ i8 toupper(i8 c) {
 }
 
 void memcpy(void *restrict dst, const void *restrict src, size_t size) {
-    if(dst == NULL) return;
-    if(src == NULL) return;
+    if(!dst || !src) return;
     i8* d = (i8*) dst;
     i8* s = (i8*) src;
     u64 n = 0;
