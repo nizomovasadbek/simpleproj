@@ -5,7 +5,7 @@ LD=i386-elf-ld
 LD_FLAG=-Map=output.map -g
 CC_FLAG=-I$(SRC)/kernel/std -I$(SRC)/kernel/vga -I$(SRC)/kernel/io_port \
 -I$(SRC)/kernel/mem -I$(SRC)/kernel/keyboard \
--Ttext 0x1000 -ffreestanding -Wall -Wextra -O3 -nostdlib -fno-builtin -fno-builtin-functions -g
+-Ttext 0x1000 -ffreestanding -Wall -Wextra -nostdlib -fno-builtin -fno-builtin-functions -g
 BUILD=build
 SRC=src
 MAIN=main.img

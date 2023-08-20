@@ -10,5 +10,7 @@ void kmain(void) {
     testPs2Controller();
     testPs2Port();
 
+    printf("Lower Hexadecimal %x\nUpper hexadecimal %X\n", 0xFAC0, 0xFAC0);
+
     while(1);
 }
