@@ -1,7 +1,7 @@
 #ifndef _KSTDINT_H
 #define _KSTDINT_H
 
-typedef char i8;
+typedef signed char i8;
 typedef unsigned char u8;
 typedef short i16;
 typedef unsigned short u16;
