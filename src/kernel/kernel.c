@@ -11,5 +11,8 @@ void kmain(void) {
     testPs2Controller();
     testPs2Port();
 
+    clearScreen();
+    printf("Hello SimpleOS!");
+
     while(1);
 }

@@ -4,6 +4,6 @@
 #include "stdint.h"
 #include <screen.h>
 
-void printf(i8*, ...);
+void printf(const char*, ...);
 
 #endif

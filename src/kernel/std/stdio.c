@@ -6,11 +6,11 @@
 void printHex(i32, u8);
 void printDec(i32);
 
-void printf(i8* str, ...) {
+void printf(const char* str, ...) {
     void* argp = &str;
     argp += 4;
-    i8 character = 0;
-    i8* temp;
+    char character = 0;
+    char* temp;
 
     while(*str) {
         if(*str == '%') {
@@ -36,9 +36,9 @@ void printf(i8* str, ...) {
                     break;
 
                 case 's':
-                    temp = *(i8**) argp;
+                    temp = *(char**) argp;
                     println(temp);
-                    argp += sizeof(i8*);
+                    argp += sizeof(char*);
                     str += 2;
                     break;
 
