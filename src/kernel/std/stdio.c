@@ -66,7 +66,7 @@ void printHex(i32 num, u8 is_upper) {
         return;
     }
 
-    is_upper = (is_upper == 'X') ? 1 : 0;
+    is_upper = is_upper != 'X';
     #define TOKEN (is_upper*32)
 
     i8 digit[] = { '0', '1', '2', '3', '4', '5', '6',
