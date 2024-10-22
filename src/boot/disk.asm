@@ -1,4 +1,5 @@
 kernel_load:
+
     push ax
     push bx
     push dx
@@ -10,7 +11,6 @@ kernel_load:
     mov cl, 2
     mov dh, 0
     mov dl, 0
-
 
 kernel_load_loop:
     clc

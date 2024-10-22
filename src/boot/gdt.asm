@@ -1,7 +1,6 @@
 GDT_START:
     null_descriptor:
-        dd 0
-        dd 0
+        dq 0
     code_descriptor:
         dw 0xFFFF
         dw 0

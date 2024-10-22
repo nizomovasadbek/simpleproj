@@ -28,3 +28,13 @@ size_t strlen(const char *restrict str) {
 
     return len;
 }
+
+void strcpy(char* restrict dst, const char* restrict src, const size_t size) {
+    size_t dst_len = strlen(dst);
+    size_t src_len = strlen(src);
+    if(src_len > size || dst_len > size) {
+        return;
+    }
+
+    memcpy(dst, src, size);
+}

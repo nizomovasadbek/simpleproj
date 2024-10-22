@@ -12,10 +12,20 @@ bootloader_entry:
 %include "src/boot/disk.asm"
 
 a20_enable:
+    cli
+
+    push bp
+    mov bp, sp
+
     push ax
     mov ax, 0x2401
-    int 0x10
+    int 0x15
     pop ax
+
+    mov sp, bp
+    pop bp
+
+    sti
     ret
 
 bootloader_main:
